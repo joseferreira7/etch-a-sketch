@@ -38,7 +38,16 @@ cells.forEach((cell) => {
 const sizeSelector = document.querySelector('#size-selector');
 
 sizeSelector.addEventListener('click', () => {
-    let max = prompt('Select a grid size');
+    let max = 10;
+    
+    max = prompt('Select a grid size');
+    while (max >= 100) {
+        alert('Too high, select a grid size less than 100');
+        max = prompt('Select a grid size');
+    }
+    
+    if (max <= 0) max = 10;
+
     while (grid.hasChildNodes()) grid.removeChild(grid.lastChild);
     drawGrid(max);
 
